@@ -17,12 +17,26 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Future<List<String>> fetchData() async {
     // You can replace this with the actual logic to fetch data
-    List<String> object = await getToken(input: 'คอร์สเรียนออนไลน์เพิ่มทักษะยุคดิจิทัล') ?? [""];
+    List<String> object =
+        await getToken(input: 'คอร์สเรียนออนไลน์เพิ่มทักษะยุคดิจิทัล') ?? [""];
+    // String object1 = await getcurrentdir();
     // Future.delayed(Duration(seconds: 2));
     // if object!
     // Simulating data fetching
     print(object);
     return object;
+  }
+
+  Future<String> fetchData222() async {
+    // You can replace this with the actual logic to fetch data
+    // List<String> object =
+    // await getToken(input: 'คอร์สเรียนออนไลน์เพิ่มทักษะยุคดิจิทัล') ?? [""];
+    String object1 = await getcurrentdir();
+    // Future.delayed(Duration(seconds: 2));
+    // if object!
+    // Simulating data fetching
+    print(object1);
+    return object1;
   }
 
   @override
@@ -35,10 +49,9 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               children: [
                 Text('${hello(a: 'JIN')}`\n'),
-                Text('Result: `${greet(name: "Tom")}`\n'),
+                Text('Result: `${greet(name: "PATH:")}`\n'),
                 Text('fetchData:${fetchData()}'),
                 Text('getToken:${getToken(input: 'ผมก็ว่าพูดยาก')}'),
-
                 FutureBuilder(
                   future: fetchData(),
                   builder: (context, AsyncSnapshot<List<String>> snapshot) {
@@ -55,13 +68,12 @@ class _MyAppState extends State<MyApp> {
                     }
                   },
                 ),
-            
               ],
             ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () async{
+          onPressed: () async {
             print(fetchData());
             // List<String> getDataFromRust = await getToken(input: 'ผมก็ว่าพูดยาก ');
             // print(getDataFromRust);

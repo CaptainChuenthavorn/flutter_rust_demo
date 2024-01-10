@@ -4,12 +4,35 @@
 // Section: imports
 
 use super::*;
+use crate::api::simple::*;
 use flutter_rust_bridge::for_generated::byteorder::{NativeEndian, ReadBytesExt, WriteBytesExt};
 use flutter_rust_bridge::for_generated::transform_result_dco;
 use flutter_rust_bridge::{Handler, IntoIntoDart};
 
 // Section: dart2rust
 
+impl CstDecode<flutter_rust_bridge::for_generated::anyhow::Error>
+    for *mut wire_cst_list_prim_u_8_strict
+{
+    fn cst_decode(self) -> flutter_rust_bridge::for_generated::anyhow::Error {
+        unimplemented!()
+    }
+}
+impl
+    CstDecode<
+        flutter_rust_bridge::RustOpaque<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<(String)>,
+        >,
+    > for *const std::ffi::c_void
+{
+    fn cst_decode(
+        self,
+    ) -> flutter_rust_bridge::RustOpaque<
+        flutter_rust_bridge::for_generated::rust_async::RwLock<(String)>,
+    > {
+        unsafe { flutter_rust_bridge::for_generated::cst_decode_rust_opaque(self) }
+    }
+}
 impl CstDecode<String> for *mut wire_cst_list_prim_u_8_strict {
     fn cst_decode(self) -> String {
         let vec: Vec<u8> = self.cst_decode();
@@ -69,6 +92,11 @@ pub extern "C" fn frbgen_flutter_rust_demo_wire_get_token(
 }
 
 #[no_mangle]
+pub extern "C" fn frbgen_flutter_rust_demo_wire_getcurrentdir(port_: i64) {
+    wire_getcurrentdir_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn frbgen_flutter_rust_demo_wire_greet(
     name: *mut wire_cst_list_prim_u_8_strict,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartDco {
@@ -94,6 +122,28 @@ pub extern "C" fn frbgen_flutter_rust_demo_wire_my_rust_function(
     a: *mut wire_cst_list_prim_u_8_strict,
 ) {
     wire_my_rust_function_impl(port_, a)
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_flutter_rust_demo_rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_increment_strong_count::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<(String)>,
+        >(ptr);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn frbgen_flutter_rust_demo_rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedrust_asyncRwLockString(
+    ptr: *const std::ffi::c_void,
+) {
+    unsafe {
+        flutter_rust_bridge::for_generated::rust_arc_decrement_strong_count::<
+            flutter_rust_bridge::for_generated::rust_async::RwLock<(String)>,
+        >(ptr);
+    }
 }
 
 #[no_mangle]

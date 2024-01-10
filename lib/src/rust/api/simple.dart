@@ -6,6 +6,9 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<String> getcurrentdir({dynamic hint}) =>
+    RustLib.instance.api.getcurrentdir(hint: hint);
+
 String greet({required String name, dynamic hint}) =>
     RustLib.instance.api.greet(name: name, hint: hint);
 
@@ -17,3 +20,21 @@ Future<String> myRustFunction({required String a, dynamic hint}) =>
 
 Future<List<String>> getToken({required String input, dynamic hint}) =>
     RustLib.instance.api.getToken(input: input, hint: hint);
+
+// Rust type: flutter_rust_bridge::RustOpaque<flutter_rust_bridge::for_generated::rust_async::RwLock<(String)>>
+@sealed
+class String extends RustOpaque {
+  String.dcoDecode(List<dynamic> wire) : super.dcoDecode(wire, _kStaticData);
+
+  String.sseDecode(int ptr, int externalSizeOnNative)
+      : super.sseDecode(ptr, externalSizeOnNative, _kStaticData);
+
+  static final _kStaticData = RustArcStaticData(
+    rustArcIncrementStrongCount:
+        RustLib.instance.api.rust_arc_increment_strong_count_String,
+    rustArcDecrementStrongCount:
+        RustLib.instance.api.rust_arc_decrement_strong_count_String,
+    rustArcDecrementStrongCountPtr:
+        RustLib.instance.api.rust_arc_decrement_strong_count_StringPtr,
+  );
+}
